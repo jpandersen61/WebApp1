@@ -20,7 +20,7 @@ namespace WebApp1.Pages.Something
             if (user != null)
             {
                 //Trying to get the list of roles assigned to the user
-                //IUserRoleStore interface remains to be implemented
+                //IUserRoleStore interface remains to be implemented    
                 //AggregateException: One or more errors occurred. (Store does not implement IUserRoleStore<TUser>.)
                 IList<string> roles = _userManager.GetRolesAsync(user).Result;
 
