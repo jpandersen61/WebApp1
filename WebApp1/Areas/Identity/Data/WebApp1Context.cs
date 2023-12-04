@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using WebApp1.Areas.Identity.Data;
+using System;
 
 namespace WebApp1.Data;
 
-public class WebApp1Context : IdentityDbContext<IdentityUser>
+public class WebApp1Context : IdentityDbContext<WebApp1User, ApplicationRole, Guid>
 {
     public WebApp1Context(DbContextOptions<WebApp1Context> options)
         : base(options)

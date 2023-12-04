@@ -1,22 +1,26 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using WebApp1.Areas.Identity.Data;
 
 namespace WebApp1.Pages.Something
 {
+    [Authorize(Policy = "RequireAdministratorRole")]
     public class IndexModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<WebApp1User> _userManager;
+        
         
         public IndexModel(
-            UserManager<IdentityUser> userManager)
+            UserManager<WebApp1User> userManager)
             
         {
             _userManager=userManager;
         }
         public void OnGet()
         {
-            IdentityUser? user =  _userManager.GetUserAsync(User).Result;
+            WebApp1User? user =  _userManager.GetUserAsync(User).Result;
             if (user != null)
             {
                 //Trying to get the list of roles assigned to the user
